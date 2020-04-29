@@ -75,6 +75,10 @@ class ClienteController extends Controller
         if(session()->has("login")){
             $cliente = Cliente::find($id);
 
+            foreach($cliente->vendas as $v){
+                $v->delete();
+            }
+
             if ($cliente->delete()){
                 $msg = "Usuário $id excluído com sucesso.";
             } else {
