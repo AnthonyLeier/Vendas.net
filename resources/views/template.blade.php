@@ -18,7 +18,7 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link text-light">Olá, {{session('nome')}}</a>
+                            <a class="nav-link text-light">Olá, {{Auth::user()->name}}</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{route('tela_cliente_cadastro')}}">Cadastrar</a>
@@ -53,6 +53,12 @@
                 <!-- coluna vazia esquerda -->
             </div>
             <div class="col-md-8 mt-3">
+                @if(session()->has('mensagem'))
+                    <div class="alert alert-danger">{{session('mensagem')}}</div>
+                    @php
+                        session()->forget(['mensagem'])
+                    @endphp
+                @endif
                 @yield('conteudo')
             </div>
             <div class="col-md-2">
