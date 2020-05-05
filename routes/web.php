@@ -19,7 +19,6 @@ Route::get('/', function () {
 
 Route::middleware(['auth'])->group(function(){
 	Route::get('/cliente/listar', 'ClienteController@listar')->name('cliente_listar');
-	Route::get('/tela_login', 'AppController@tela_login')->name('tela_login');
 	Route::post('/login', 'AppController@login')->name('login');
 	Route::get('/logout', 'AppController@logout')->name('logout');
 	Route::get('/vendas/cliente/{id}', 'VendaController@vendasPorCliente')->name('venda_cliente_listar');

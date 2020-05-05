@@ -21,10 +21,10 @@
                             <a class="nav-link text-light">Olá, {{Auth::user()->name}}</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{route('tela_cliente_cadastro')}}">Cadastrar</a>
+                            <a class="nav-link" href="{{route('tela_cliente_cadastro')}}">Cadastrar Cliente</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{route('cliente_listar')}}">Listar Usuários</a>
+                            <a class="nav-link" href="{{route('cliente_listar')}}">Listar Clientes</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{route('tela_venda_cadastro')}}">Vender</a>

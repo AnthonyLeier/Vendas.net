@@ -38,6 +38,6 @@ class AppController extends Controller
 
     function logout(){
         Auth::logout();
-        return redirect()->route('tela_login');
+        return redirect()->route('home');
     }
 }
