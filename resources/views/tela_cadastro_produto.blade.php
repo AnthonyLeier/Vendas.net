@@ -14,13 +14,13 @@
 <form method="post" action="{{route('produto_add')}}" class="mt-4" enctype="multipart/form-data">
     @csrf
     <div class="form-group">
-        <input type="text" class="form-control" name="nome" placeholder="Nome">
+        <input type="text" class="form-control" name="nome" placeholder="Nome" required>
     </div>
     <div class="form-group">
-        <textarea class="form-control" id="textarea" name="descricao" rows="3" placeholder="Descrição"></textarea>
+        <textarea class="form-control" id="textarea" name="descricao" rows="3" placeholder="Descrição" required></textarea>
     </div>
     <div class="form-group">
-        <input type="number" name="preco" class="form-control" placeholder="Preço" min="0" step="0.1">
+        <input type="number" name="preco" class="form-control" placeholder="Preço" min="0" step="0.1" required>
     </div>
     <div class="form-group">
         <input type="text" class="form-control" name="unidade" placeholder="Unidade de Medida">

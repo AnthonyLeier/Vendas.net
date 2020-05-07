@@ -20,7 +20,7 @@
         <input type="text" class="form-control" name="login" placeholder="Login" value="{{old('login')}}">
     </div>
     <div class="form-group">
-        <input type="password" class="form-control" name="senha" placeholder="Senha">
+        <input type="password" class="form-control" name="senha" placeholder="Senha" required>
     </div>
     <div class="form-group">
         <input type="password" class="form-control" name="senha_confirmation" placeholder="Repita a Senha">
