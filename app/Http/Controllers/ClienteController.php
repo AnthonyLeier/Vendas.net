@@ -21,6 +21,12 @@ class ClienteController extends Controller
         $login = $req->input('login');
         $senha = $req->input('senha');
 
+        $req->validate([
+            'nome' => 'required|min:10',
+            'login' => 'required|alpha_num|min:8',
+            'senha' => 'required|min:6|different:nome|confirmed'
+        ]);
+
         $cliente = new Cliente();
         $cliente->nome = $nome;
         $cliente->login = $login;
