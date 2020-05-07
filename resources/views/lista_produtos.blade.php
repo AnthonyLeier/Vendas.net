@@ -15,6 +15,7 @@
     <tbody>
         @foreach ($lista as $p)
         <tr>
+            <td><img src="{{url($p->imagem)}}"></td>
             <td>{{ $p->id }}</td>
             <td>{{ $p->nome }}</td>
             <td>{{ $p->descricao }}</td>

@@ -18,9 +18,11 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link text-light">@php
-                                if(Auth::user()) echo Auth::user()->name;
-                                @endphp</a>
+                            <a class="nav-link text-light">
+                            @php
+                            if(Auth::user()) echo "Olá, ".Auth::user()->name;
+                            @endphp
+                            </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{route('tela_cliente_cadastro')}}">Cadastrar Cliente</a>

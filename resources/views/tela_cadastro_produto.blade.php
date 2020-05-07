@@ -1,6 +1,17 @@
 @extends('template') @section('conteudo')
+
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+
 <h1 class="col-12 text-center mt-2">Cadastro de Produto</h1>
-<form method="post" action="{{route('produto_add')}}" class="mt-4">
+<form method="post" action="{{route('produto_add')}}" class="mt-4" enctype="multipart/form-data">
     @csrf
     <div class="form-group">
         <input type="text" class="form-control" name="nome" placeholder="Nome" required>
@@ -21,6 +32,10 @@
             <option value="{{$t->id}}">{{$t->nome}}</option>
             @endforeach
         </select>
+    </div>
+
+    <div class="form-group">
+        <input type="file" name="upload" class="form-control">
     </div>
     <div class="form-group mt-3">
         <input type="submit" class="btn btn-primary btn-lg btn-block" value="Cadastrar">

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use App\Tipo;
 use App\Produto;
 
@@ -20,13 +21,37 @@ class ProdutoController extends Controller
     }
 
     function adicionar(Request $req){
+
+        $req->validate([
+            'nome' => 'required|min:10',
+            'descricao' => 'required|min:10',
+            'preco' => 'required|numeric',
+            'upload' => 'required|image|max:2048'
+        ]);
+        
         $produto = new Produto();
         $produto->nome = $req->input('nome');
         $produto->descricao = $req->input('descricao');
         $produto->preco = $req->input('preco');
         $produto->unidade_venda = $req->input('unidade');
         $produto->id_tipo = $req->input('id_tipo');
+        $produto->imagem = $produto->nome;
+
         
+
+        $imagem = $req->file('upload');
+
+
+        $nome_arquivo = $produto->nome." ".$produto->id;
+
+        $nome_arquivo = Str::of($nome_arquivo)->slug('-');
+        
+        $nome_arquivo = $nome_arquivo.".".$imagem->extension();
+        
+        $nome_arquivo = $imagem->storeAs('imagens_produtos', $nome_arquivo);
+
+        $produto->imagem = "upload/$nome_arquivo";
+
         if ($produto->save()){
             $msg = "Produto $produto->nome adicionado com sucesso.";
         } else {
