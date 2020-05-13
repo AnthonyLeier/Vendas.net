@@ -1,10 +1,14 @@
 @extends('template') @section('conteudo')
 <h1 class="col-12 text-center mt-2">Lista de Clientes</h1>
+<form class="form-control">
+    <input type="text" name="busca" placeholder="Buscar" autocomplete="off">
+    <input type="submit">
+</form>
 <table class="table table-striped table-bordered mt-3">
     <thead>
         <tr>
             <th>ID</th>
-            <th>Nome</th>
+            <th><a href="?ordem=nome">Nome</a></th>
             <th>Login</th>
             <th>Operações</th>
         </tr>
@@ -24,6 +28,10 @@
         @endforeach
     </tbody>
 </table>
+
+{{$listaClientes->links()}}
+
+
 <a class="btn btn-primary btn-block" href="{{ route('tela_cliente_cadastro') }}">Cadastrar novo</a>
 <script>
     function exclui(id) {
