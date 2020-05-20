@@ -29,6 +29,7 @@ Route::middleware(['auth'])->group(function(){
 	Route::get('/produto/listar', 'ProdutoController@listar')->name('tela_produto_listar');
 
 	Route::middleware(['eh_admin'])->group(function(){
+		Route::get('/dashboard', 'AppController@dashboard')->name('dashboard');
 		Route::get('/cliente/cadastro', 'ClienteController@telaCadastro')->name('tela_cliente_cadastro');
 		Route::get('/cliente/alterar/{id}', 'ClienteController@telaAlteracao')->name('tela_cliente_alteracao');
 		Route::post('/cliente/adicionar', 'ClienteController@adicionar')->name('cliente_add');

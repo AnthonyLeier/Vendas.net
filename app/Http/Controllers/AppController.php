@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Cliente;
+use App\User;
+use App\Venda;
 use Auth;
 
 class AppController extends Controller
@@ -39,5 +41,16 @@ class AppController extends Controller
     function logout(){
         Auth::logout();
         return redirect()->route('home');
+    }
+
+    function dashboard(){
+
+
+        $vendas_hora = Venda::selectRaw("HOUR(created_at) as hora, AVG('valor') as media")->groupByRaw("HOUR(created_at)")->orderByRaw("HOUR('created_at')")->get();
+
+        $usuarios_cadastrados = User::all()->count();
+
+        return view('dashboard', ['vendas_hora' => $vendas_hora, 'usuarios_cadastrados' => $usuarios_cadastrados]);
+
     }
 }
