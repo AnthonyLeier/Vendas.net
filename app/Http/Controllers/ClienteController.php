@@ -77,8 +77,44 @@ class ClienteController extends Controller
         return view("resultado", [ "mensagem" => $msg]);
     }
 
-    function listar(){
-        $clientes = Cliente::all();
-        return view("lista_clientes", [ "listaClientes" => $clientes ]);
+    function listar(Request $req){
+        $clientes = null;
+
+        $quantidade = 1;
+
+        if($req->query('ordem')){
+            $ordem = $req->query('ordem');
+
+            $clientes = Cliente::where('nome','LIKE', "%$ordem%"); 
+            $clientes = Cliente::orderBy($ordem); 
+            //$clientes = Cliente::orderBy($ordem, 'desc')->get();
+        }
+
+        if($req->query('busca')){
+            $busca = $req->query('busca');
+
+            if($clientes == null){
+                $clientes = Cliente::where('nome','LIKE', "%$busca%");   
+            }else{
+                $clientes = $clientes->where('nome','LIKE', "%$busca%"); 
+            }
+            
+        }
+
+        if($clientes == null){
+            $clientes = Cliente::paginate($quantidade);
+        }else{ 
+
+            $vetor_parametros = [];
+
+
+            if(isset($ordem)) $vetor_parametros["ordem"] = $ordem;
+            if(isset($busca)) $vetor_parametros["busca"] = $busca;
+
+
+            $clientes = $clientes->paginate($quantidade)->appends($vetor_parametros);
+        }
+
+        return view("lista_clientes", [ "listaClientes" => $clientes ]);    
     }
 }
