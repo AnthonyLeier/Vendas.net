@@ -32,6 +32,9 @@ Route::middleware(['auth'])->group(function(){
 		Route::get('/dashboard', 'AppController@dashboard')->name('dashboard');
 		Route::get('/cliente/cadastro', 'ClienteController@telaCadastro')->name('tela_cliente_cadastro');
 		Route::get('/cliente/alterar/{id}', 'ClienteController@telaAlteracao')->name('tela_cliente_alteracao');
+		
+		Route::post('/cliente/cadastro_1', 'ClienteController@passo1')->name('cliente_passo1');
+
 		Route::post('/cliente/adicionar', 'ClienteController@adicionar')->name('cliente_add');
 		Route::post('/cliente/alterar/{id}', 'ClienteController@alterar')->name('cliente_update');
 		Route::get('/cliente/excluir/{id}', 'ClienteController@excluir')->name('cliente_delete');
