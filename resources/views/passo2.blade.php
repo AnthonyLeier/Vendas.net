@@ -29,18 +29,6 @@
         <input type="number" class="form-control" value="{{$cep}}" name="cep" placeholder="CEP">
     </div>
     <div class="form-group">
-        <input type="text" class="form-control" value="{{$logradouro}}"name="logradouro" placeholder="Logradouro">
-    </div>
-    <div class="form-group">
-        <input type="text" class="form-control" value="{{$bairro}}" name="bairro" placeholder="Bairro">
-    </div>
-    <div class="form-group">
-        <input type="text" class="form-control" value="{{$cidade}}" name="cidade" placeholder="Cidade">
-    </div>
-    <div class="form-group">
-        <input type="text" class="form-control" value="{{$estado}}" name="estado" placeholder="Estado">
-    </div>
-    <div class="form-group">
         <input type="submit" class="btn btn-primary btn-lg btn-block" value="Cadastrar">
     </div>
 </form>
